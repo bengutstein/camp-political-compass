@@ -105,7 +105,7 @@ export function PublicCompass() {
             setGesherYearFilter(event.target.value);
             setSelectedPointId(null);
           }}
-          className="min-h-11 w-full border border-line bg-white px-3 py-2 font-normal outline-none focus:border-moss focus:ring-2 focus:ring-moss/30 sm:min-h-0 sm:w-auto sm:px-2 sm:py-1"
+          className="min-h-11 w-full border border-line bg-white px-3 py-2 text-base font-normal outline-none focus:border-moss focus:ring-2 focus:ring-moss/30 sm:min-h-0 sm:w-auto sm:px-2 sm:py-1 sm:text-xs"
         >
           <option value="all">All years</option>
           <option value="legends">Legends</option>
@@ -145,7 +145,7 @@ export function PublicCompass() {
             }}
             placeholder="Search by name"
             autoComplete="off"
-            className="mt-2 min-h-11 w-full border border-line bg-paper px-3 py-2 font-normal outline-none transition focus:border-moss focus:ring-2 focus:ring-moss/30"
+            className="mt-2 min-h-11 w-full border border-line bg-paper px-3 py-2 text-base font-normal outline-none transition focus:border-moss focus:ring-2 focus:ring-moss/30 sm:text-xs"
           />
         </label>
 
@@ -226,7 +226,7 @@ export function PublicCompass() {
                 placeholder="Leave blank to clear all results"
                 autoComplete="off"
                 autoFocus
-                className="mt-2 min-h-11 w-full border border-line bg-paper px-3 py-2 font-normal outline-none transition focus:border-moss focus:ring-2 focus:ring-moss/30"
+                className="mt-2 min-h-11 w-full border border-line bg-paper px-3 py-2 text-base font-normal outline-none transition focus:border-moss focus:ring-2 focus:ring-moss/30 sm:text-xs"
               />
             </label>
             <label className="mt-3 block text-xs font-bold">
@@ -237,7 +237,7 @@ export function PublicCompass() {
                 type="password"
                 inputMode="numeric"
                 autoComplete="off"
-                className="mt-2 min-h-11 w-full border border-line bg-paper px-3 py-2 font-normal outline-none transition focus:border-moss focus:ring-2 focus:ring-moss/30"
+                className="mt-2 min-h-11 w-full border border-line bg-paper px-3 py-2 text-base font-normal outline-none transition focus:border-moss focus:ring-2 focus:ring-moss/30 sm:text-xs"
               />
             </label>
             {resetError && (
