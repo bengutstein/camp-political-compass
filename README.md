@@ -36,7 +36,7 @@ A question can affect either coordinate or both:
 
 Answer values are multiplied by the corresponding X and Y weights. `lib/scoring.ts` adds the contributions, divides each raw total by its theoretical maximum possible magnitude, then maps it to `-10…+10`, clamps it, and rounds to two decimals. The API route is the authoritative scorer; the browser only submits answers.
 
-`quizConfig.scoring.intensityMultiplier` controls how quickly strongly consistent answer patterns reach the outer ends of the chart. It is set to `1.5` for this prototype and can be adjusted without changing the scoring implementation.
+`quizConfig.scoring.intensityMultiplier` controls how quickly strongly consistent answer patterns reach the outer ends of the chart. It is set to `1.65` for this prototype and can be adjusted without changing the scoring implementation.
 
 Anonymous submissions are saved through Prisma with scores and JSON answers only. No email, IP, location, or account data is requested. `GET /api/stats` provides aggregate count and average coordinates without exposing individual responses.
 

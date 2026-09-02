@@ -8,7 +8,7 @@ export const quizConfig = {
     { label: "Strongly Agree", value: 2 },
   ],
   // Raise this to make strongly consistent answer patterns reach ±10 sooner.
-  scoring: { intensityMultiplier: 1.5 },
+  scoring: { intensityMultiplier: 1.65 },
   xAxis: { minLabel: "Secular", maxLabel: "Religious", title: "Secular–Religious Scale" },
   yAxis: { minLabel: "Libertarian", maxLabel: "Authoritarian", title: "Authority–Liberty Scale" },
   exampleResults: [
