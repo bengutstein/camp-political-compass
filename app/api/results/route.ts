@@ -24,8 +24,15 @@ export async function POST(request: Request) {
   if (!name || name.length > MAX_NAME_LENGTH) return NextResponse.json({ error: `Enter a display name of up to ${MAX_NAME_LENGTH} characters.` }, { status: 400 });
   if (!validScore(body.x) || !validScore(body.y)) return NextResponse.json({ error: "Scores must be between -10 and +10." }, { status: 400 });
   try {
-    const submission = typeof body.submissionId === "string"
-      ? await db.quizSubmission.update({ where: { id: body.submissionId }, data: { optionalName: name } })
+    const existingSubmission = await db.quizSubmission.findFirst({
+      where: { optionalName: { equals: name, mode: "insensitive" } },
+      select: { id: true },
+    });
+    const data = { xScore: body.x, yScore: body.y, optionalName: name };
+    const submission = existingSubmission
+      ? await db.quizSubmission.update({ where: { id: existingSubmission.id }, data })
+      : typeof body.submissionId === "string"
+      ? await db.quizSubmission.update({ where: { id: body.submissionId }, data })
       : await db.quizSubmission.create({ data: { xScore: body.x, yScore: body.y, answersJson: "[]", optionalName: name } });
     return NextResponse.json({ id: submission.id, name: submission.optionalName, x: submission.xScore, y: submission.yScore });
   } catch (error) {
