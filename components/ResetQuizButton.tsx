@@ -7,5 +7,5 @@ export function ResetQuizButton() {
     // A full navigation also clears the in-memory quiz state when reset mid-quiz.
     window.location.assign("/quiz");
   };
-  return <button type="button" onClick={reset} className="text-xs font-bold text-clay underline decoration-clay decoration-2 underline-offset-4 transition hover:text-ink">Reset quiz</button>;
+  return <button type="button" onClick={reset} className="inline-flex min-h-11 items-center text-xs font-bold text-clay underline decoration-clay decoration-2 underline-offset-4 transition hover:text-ink sm:min-h-0">Reset quiz</button>;
 }
