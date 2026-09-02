@@ -16,8 +16,7 @@ export const quizConfig = {
     { name: "Canter Chesler", x: 5.5, y: 5 },
     { name: "Moose", x: -5, y: -2.5 },
     { name: "Rabbi Linden", x: 5, y: -2.5 },
-    { name: "Jeremy Steinman", x: -1.5, y: 1.5 },
-    { name: "Ben Gutstein", x: 2.5, y: -6 },
+    { name: "Corey Maize", x: -4, y: -5 },
   ],
   quadrants: {
     "upper-left": { name: "Secular New Camp", description: "You tend to favor a more secular camp culture alongside a newer vision for camp traditions and programming.", color: "#e9a69b" },
