@@ -1,0 +1,3 @@
+export function QuizNavigation({ onBack, onNext, isFirst, isLast, disabled, loading }: { onBack: () => void; onNext: () => void; isFirst: boolean; isLast: boolean; disabled: boolean; loading: boolean }) {
+  return <div className="mt-8 flex items-center justify-between gap-5"><button type="button" onClick={onBack} disabled={isFirst || loading} className="px-1 py-3 text-sm font-bold underline underline-offset-4 disabled:cursor-not-allowed disabled:opacity-30">← Previous</button><button type="button" onClick={onNext} disabled={disabled || loading} className="bg-moss px-6 py-4 text-sm font-bold text-white transition hover:bg-ink disabled:cursor-not-allowed disabled:opacity-40">{loading ? "Calculating…" : isLast ? "See My Results" : "Continue →"}</button></div>;
+}
