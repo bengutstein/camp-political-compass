@@ -10,7 +10,7 @@ export const quizConfig = {
   // Raise this to make strongly consistent answer patterns reach ±10 sooner.
   scoring: { intensityMultiplier: 1.65 },
   xAxis: { minLabel: "Secular", maxLabel: "Religious", title: "Secular–Religious Scale" },
-  yAxis: { minLabel: "Libertarian", maxLabel: "Authoritarian", title: "Authority–Liberty Scale" },
+  yAxis: { minLabel: "Old Camp", maxLabel: "New Camp", title: "Old Camp–New Camp Scale" },
   exampleResults: [
     { name: "Rabbi Resnick", x: -6, y: 6 },
     { name: "Canter Chesler", x: 5.5, y: 5 },
@@ -20,10 +20,10 @@ export const quizConfig = {
     { name: "Ben Gutstein", x: 2.5, y: -6 },
   ],
   quadrants: {
-    "upper-left": { name: "Secular Authoritarian", description: "You tend to favor a more secular camp culture alongside stronger shared structure and leadership.", color: "#e9a69b" },
-    "upper-right": { name: "Religious Authoritarian", description: "You tend to favor a more religious camp culture alongside stronger shared structure and leadership.", color: "#a9c5df" },
-    "lower-left": { name: "Secular Libertarian", description: "You tend to favor a more secular camp culture alongside greater individual choice and flexibility.", color: "#abd2bc" },
-    "lower-right": { name: "Religious Libertarian", description: "You tend to favor a more religious camp culture alongside greater individual choice and flexibility.", color: "#c8b4d8" },
+    "upper-left": { name: "Secular New Camp", description: "You tend to favor a more secular camp culture alongside a newer vision for camp traditions and programming.", color: "#e9a69b" },
+    "upper-right": { name: "Religious New Camp", description: "You tend to favor a more religious camp culture alongside a newer vision for camp traditions and programming.", color: "#a9c5df" },
+    "lower-left": { name: "Secular Old Camp", description: "You tend to favor a more secular camp culture alongside long-standing camp traditions and programming.", color: "#abd2bc" },
+    "lower-right": { name: "Religious Old Camp", description: "You tend to favor a more religious camp culture alongside long-standing camp traditions and programming.", color: "#c8b4d8" },
   },
   sections: [
     { id: "world", title: "The World Around You", intro: "Consider the forces that shape daily life." },
