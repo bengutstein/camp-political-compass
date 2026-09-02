@@ -9,7 +9,7 @@ nvm use
 npm install
 cp .env.example .env
 npm run db:generate
-npm run db:push
+npm run db:migrate
 npm run dev
 ```
 
@@ -17,7 +17,7 @@ The project targets Node 22 (see `.nvmrc`); this is a supported Node release for
 
 Open `http://localhost:3000`. Run the test suite with `npm test`, and produce a production build with `npm run build`.
 
-`db:push` creates the local SQLite database from `prisma/schema.prisma`. The committed migration in `prisma/migrations` can be used instead with `npm run db:migrate`.
+Create a PostgreSQL database, place its connection string in `DATABASE_URL`, then run `npm run db:migrate` to apply the committed migration.
 
 ## Customizing the quiz
 
@@ -46,4 +46,4 @@ On the results page, a participant may enter a display name and choose **Save my
 
 ## Deploying
 
-For a production deployment, set `DATABASE_URL` to a production-compatible Prisma database URL (SQLite is fine for a small single-instance deployment), run `prisma generate` during build, and apply migrations with `prisma migrate deploy`. Set the host's build command to `npm run build` and start command to `npm run start`.
+For a production deployment, connect a managed PostgreSQL database and set `DATABASE_URL` to its connection string. Vercel deployments run `prisma generate` and `prisma migrate deploy` automatically through `vercel.json` before building the app.

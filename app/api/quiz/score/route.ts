@@ -13,5 +13,5 @@ export async function POST(request: Request) {
   try {
     const submission = await db.quizSubmission.create({ data: { xScore: score.x, yScore: score.y, answersJson: JSON.stringify(validation.answers) } });
     return NextResponse.json({ ...score, submissionId: submission.id });
-  } catch (error) { console.error("Could not save anonymous quiz submission", error); return NextResponse.json({ error: "Could not record this submission. Initialize the local database and try again." }, { status: 503 }); }
+  } catch (error) { console.error("Could not save anonymous quiz submission", error); return NextResponse.json({ error: "Could not record this submission. Please try again." }, { status: 503 }); }
 }
