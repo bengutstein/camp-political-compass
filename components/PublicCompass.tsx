@@ -9,8 +9,8 @@ function pointKey(point: CompassPoint) {
 }
 
 function compassLean(point: CompassPoint) {
-  return `${point.x >= 0 ? "Religious" : "Secular"} ${
-    point.y >= 0 ? "New Camp" : "Old Camp"
+  return `${point.x >= 0 ? "Tradition" : "Change"} ${
+    point.y >= 0 ? "Independence" : "Safety"
   }`;
 }
 

@@ -9,8 +9,8 @@ export const quizConfig = {
   ],
   // Raise this to make strongly consistent answer patterns reach ±10 sooner.
   scoring: { intensityMultiplier: 1.65 },
-  xAxis: { minLabel: "Secular", maxLabel: "Religious", title: "Secular–Religious Scale" },
-  yAxis: { minLabel: "Old Camp", maxLabel: "New Camp", title: "Old Camp–New Camp Scale" },
+  xAxis: { minLabel: "Change", maxLabel: "Tradition", title: "Change–Tradition Scale" },
+  yAxis: { minLabel: "Safety", maxLabel: "Independence", title: "Safety–Independence Scale" },
   exampleResults: [
     { name: "Rabbi Resnick", x: -6, y: 6 },
     { name: "Canter Chesler", x: 5.5, y: 5 },
@@ -19,10 +19,10 @@ export const quizConfig = {
     { name: "Corey Maize", x: -4, y: -5 },
   ],
   quadrants: {
-    "upper-left": { name: "Secular New Camp", description: "You tend to favor a more secular camp culture alongside a newer vision for camp traditions and programming.", color: "#e9a69b" },
-    "upper-right": { name: "Religious New Camp", description: "You tend to favor a more religious camp culture alongside a newer vision for camp traditions and programming.", color: "#a9c5df" },
-    "lower-left": { name: "Secular Old Camp", description: "You tend to favor a more secular camp culture alongside long-standing camp traditions and programming.", color: "#abd2bc" },
-    "lower-right": { name: "Religious Old Camp", description: "You tend to favor a more religious camp culture alongside long-standing camp traditions and programming.", color: "#c8b4d8" },
+    "upper-left": { name: "Change / Independence", description: "You tend to favor evolving camp traditions and programming alongside individual choice and independence.", color: "#e9a69b" },
+    "upper-right": { name: "Tradition / Independence", description: "You tend to value established camp traditions alongside individual choice and independence.", color: "#a9c5df" },
+    "lower-left": { name: "Change / Safety", description: "You tend to favor evolving camp traditions and programming alongside structure, stability, and safety.", color: "#abd2bc" },
+    "lower-right": { name: "Tradition / Safety", description: "You tend to value established camp traditions alongside structure, stability, and safety.", color: "#c8b4d8" },
   },
   sections: [
     { id: "world", title: "The World Around You", intro: "Consider the forces that shape daily life." },
