@@ -16,7 +16,7 @@ export const quizConfig = {
     { name: "Canter Chesler", x: -6, y: 6 },
     { name: "Moose", x: 5, y: -2.5 },
     { name: "Rabbi Linden", x: -8, y: -8 },
-    { name: "Corey Mais", x: -4, y: -5 },
+    { name: "Cory Mais", x: -4, y: -5 },
   ],
   quadrants: {
     "upper-left": { name: "Camper Autonomy", description: "You tend to favor evolving camp traditions and programming alongside individual choice and independence.", color: "#e9a69b" },
