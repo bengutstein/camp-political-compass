@@ -17,7 +17,7 @@ export function CompassPreview({ points, featuredPoint, highlightedPointId }: { 
   const [hoveredPoint, setHoveredPoint] = useState<string | null>(null);
   const xPosition = (value: number) => `${7 + ((value + 10) / 20) * 86}%`;
   // Keep the top and bottom title bands clear of every 44px dot touch target.
-  const yPosition = (value: number) => `${14 + ((10 - value) / 20) * 72}%`;
+  const yPosition = (value: number) => `${11 + ((10 - value) / 20) * 78}%`;
   const displayedPoints: readonly CompassPoint[] = points ?? quizConfig.exampleResults.map((point) => ({ ...point, alwaysShowName: true }));
   const activePoint = hoveredPoint;
   return <div className="relative mx-auto aspect-square w-full max-w-[420px] overflow-hidden border border-ink/20 bg-white shadow-[8px_8px_0_0_#d9e4db]" role="group" aria-label="Interactive four-quadrant compass chart">
