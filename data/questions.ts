@@ -70,6 +70,12 @@ export const questions: Question[] = [
     weights: { x: 0, y: 1 },
   },
   {
+    id: "counselor-whereabouts",
+    text: "Counselors need to always know where their campers are.",
+    section: "daily-life",
+    weights: { x: 0, y: -1 },
+  },
+  {
     id: "adir-az",
     text: "In hindsight, Adir and Az are silly traditions.",
     section: "traditions",
@@ -140,6 +146,12 @@ export const questions: Question[] = [
     text: "It is problematic to steal food from the Chadar.",
     section: "community",
     weights: { x: -1, y: 0 },
+  },
+  {
+    id: "canteen-stealing",
+    text: "Counselors should steal from canteen for their campers.",
+    section: "community",
+    weights: { x: 1, y: 0 },
   },
   {
     id: "wacky-mac",
