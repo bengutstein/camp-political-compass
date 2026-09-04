@@ -20,8 +20,8 @@ export const quizConfig = {
   ],
   quadrants: {
     "upper-left": { name: "Change / Independence", description: "You tend to favor evolving camp traditions and programming alongside individual choice and independence.", color: "#e9a69b" },
-    "upper-right": { name: "Tradition / Independence", description: "You tend to value established camp traditions alongside individual choice and independence.", color: "#a9c5df" },
-    "lower-left": { name: "Change / Safety", description: "You tend to favor evolving camp traditions and programming alongside structure, stability, and safety.", color: "#abd2bc" },
+    "upper-right": { name: "Old Camp", description: "You tend to value established camp traditions alongside individual choice and independence.", color: "#a9c5df" },
+    "lower-left": { name: "New Camp", description: "You tend to favor evolving camp traditions and programming alongside structure, stability, and safety.", color: "#abd2bc" },
     "lower-right": { name: "Tradition / Safety", description: "You tend to value established camp traditions alongside structure, stability, and safety.", color: "#c8b4d8" },
   },
   sections: [
