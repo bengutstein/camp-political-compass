@@ -34,6 +34,12 @@ export const questions: Question[] = [
     weights: { x: 0, y: 1 },
   },
   {
+    id: "sneaking-out",
+    text: "Sneaking out of your bunk at night is dangerous.",
+    section: "risk",
+    weights: { x: 0, y: -1 },
+  },
+  {
     id: "curfew",
     text: "Being late to curfew was no big deal.",
     section: "daily-life",
@@ -54,6 +60,12 @@ export const questions: Question[] = [
   {
     id: "meal-drinks",
     text: "Campers should be allowed to make tea or coffee during meals.",
+    section: "daily-life",
+    weights: { x: 0, y: 1 },
+  },
+  {
+    id: "naked-morts",
+    text: "Morts are better run naked.",
     section: "daily-life",
     weights: { x: 0, y: 1 },
   },
@@ -80,6 +92,18 @@ export const questions: Question[] = [
     text: "Silent Football constitutes bullying.",
     section: "traditions",
     weights: { x: -1, y: 0 },
+  },
+  {
+    id: "phones-at-camp",
+    text: "Having your phone at camp is detrimental to the experience.",
+    section: "traditions",
+    weights: { x: 1, y: 0 },
+  },
+  {
+    id: "bench-after-meals",
+    text: "We should bench after every meal.",
+    section: "traditions",
+    weights: { x: 1, y: 0 },
   },
   {
     id: "silent-football-important",
