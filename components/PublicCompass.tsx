@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { quizConfig } from "@/config/quizConfig";
+import { getQuadrant } from "@/lib/scoring";
 import { CompassPreview, type CompassPoint } from "./CompassPreview";
 
 function pointKey(point: CompassPoint) {
@@ -9,9 +10,7 @@ function pointKey(point: CompassPoint) {
 }
 
 function compassLean(point: CompassPoint) {
-  return `${point.x >= 0 ? "Tradition" : "Change"} ${
-    point.y >= 0 ? "Independence" : "Safety"
-  }`;
+  return quizConfig.quadrants[getQuadrant(point.x, point.y)].name;
 }
 
 export function PublicCompass() {
