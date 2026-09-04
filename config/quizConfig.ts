@@ -25,12 +25,12 @@ export const quizConfig = {
     "lower-right": { name: "Tradition / Safety", description: "You tend to value established camp traditions alongside structure, stability, and safety.", color: "#c8b4d8" },
   },
   sections: [
-    { id: "world", title: "The World Around You", intro: "Consider the forces that shape daily life." },
-    { id: "society", title: "Society", intro: "Think about shared obligations and belonging." },
-    { id: "institutions", title: "Institutions", intro: "Reflect on power, rules, and public systems." },
-    { id: "values", title: "Personal Values", intro: "Consider autonomy, responsibility, and choice." },
-    { id: "culture", title: "Culture", intro: "Think about continuity, expression, and community." },
-    { id: "future", title: "The Future", intro: "Look ahead at change and collective priorities." },
+    { id: "risk", title: "Rules & Risk", intro: "How should camp balance freedom with safety?" },
+    { id: "daily-life", title: "Daily Camp Life", intro: "Consider the choices campers make each day." },
+    { id: "traditions", title: "Traditions", intro: "Think about the customs that shape camp culture." },
+    { id: "culture", title: "Camp Culture", intro: "What should camp culture encourage or leave behind?" },
+    { id: "community", title: "Community", intro: "Consider shared standards and responsibilities at camp." },
+    { id: "favorites", title: "Camp Favorites", intro: "A few final questions about classic camp life." },
   ],
 } as const;
 
