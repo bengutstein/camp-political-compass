@@ -12,10 +12,10 @@ export const quizConfig = {
   xAxis: { minLabel: "Change", maxLabel: "Tradition", title: "Change–Tradition Scale" },
   yAxis: { minLabel: "Safety", maxLabel: "Independence", title: "Safety–Independence Scale" },
   exampleResults: [
-    { name: "Rabbi Resnick", x: -6, y: 6 },
-    { name: "Canter Chesler", x: 5.5, y: 5 },
-    { name: "Moose", x: -5, y: -2.5 },
-    { name: "Rabbi Linden", x: 5, y: -2.5 },
+    { name: "Rabbi Resnick", x: 9, y: 2 },
+    { name: "Canter Chesler", x: -6, y: 6 },
+    { name: "Moose", x: 5, y: -2.5 },
+    { name: "Rabbi Linden", x: -8, y: -8 },
     { name: "Corey Mais", x: -4, y: -5 },
   ],
   quadrants: {
