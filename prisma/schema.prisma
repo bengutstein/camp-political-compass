@@ -15,4 +15,5 @@ model QuizSubmission {
   answersJson String
   optionalName String?
   gesherYear  Int?
+  isLegend    Boolean  @default(false)
 }

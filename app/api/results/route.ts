@@ -16,11 +16,11 @@ function validGesherYear(value: unknown): value is number {
 export async function GET() {
   const results = await db.quizSubmission.findMany({
     where: { optionalName: { not: null } },
-    select: { id: true, optionalName: true, xScore: true, yScore: true, gesherYear: true },
+    select: { id: true, optionalName: true, xScore: true, yScore: true, gesherYear: true, isLegend: true },
     orderBy: { createdAt: "desc" },
     take: 100,
   });
-  return NextResponse.json(results.map((result) => ({ id: result.id, name: result.optionalName!, x: result.xScore, y: result.yScore, gesherYear: result.gesherYear })));
+  return NextResponse.json(results.map((result) => ({ id: result.id, name: result.optionalName!, x: result.xScore, y: result.yScore, gesherYear: result.gesherYear, isLegend: result.isLegend })));
 }
 
 export async function POST(request: Request) {
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
       : typeof body.submissionId === "string"
       ? await db.quizSubmission.update({ where: { id: body.submissionId }, data })
       : await db.quizSubmission.create({ data: { xScore: body.x, yScore: body.y, answersJson: "[]", optionalName: name, gesherYear: body.gesherYear } });
-    return NextResponse.json({ id: submission.id, name: submission.optionalName, x: submission.xScore, y: submission.yScore, gesherYear: submission.gesherYear });
+    return NextResponse.json({ id: submission.id, name: submission.optionalName, x: submission.xScore, y: submission.yScore, gesherYear: submission.gesherYear, isLegend: submission.isLegend });
   } catch (error) {
     console.error("Could not save public result", error);
     return NextResponse.json({ error: "Could not save this result. Please try again." }, { status: 503 });

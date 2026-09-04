@@ -9,6 +9,7 @@ export type CompassPoint = {
   x: number;
   y: number;
   gesherYear?: number | null;
+  isLegend?: boolean;
   alwaysShowName?: boolean;
 };
 
