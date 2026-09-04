@@ -18,6 +18,11 @@ export function PublicCompass() {
   const [gesherYearFilter, setGesherYearFilter] = useState("all");
   const [search, setSearch] = useState("");
   const [selectedPointId, setSelectedPointId] = useState<string | null>(null);
+  const [legendOpen, setLegendOpen] = useState(false);
+  const [legendName, setLegendName] = useState("");
+  const [legendCode, setLegendCode] = useState("");
+  const [makingLegend, setMakingLegend] = useState(false);
+  const [legendError, setLegendError] = useState("");
   const [resetOpen, setResetOpen] = useState(false);
   const [resetName, setResetName] = useState("");
   const [resetCode, setResetCode] = useState("");
@@ -35,6 +40,9 @@ export function PublicCompass() {
     ...result,
     alwaysShowName: true,
   }));
+  const displayedSavedResults = savedResults.map((result) =>
+    result.isLegend ? { ...result, alwaysShowName: true } : result,
+  );
   const gesherYears = [
     ...new Set(
       savedResults.flatMap((result) =>
@@ -46,10 +54,10 @@ export function PublicCompass() {
   ].sort((a, b) => b - a);
   const filteredPoints =
     gesherYearFilter === "legends"
-      ? fixtureResults
+      ? [...fixtureResults, ...displayedSavedResults.filter((result) => result.isLegend)]
       : gesherYearFilter === "all"
-        ? [...fixtureResults, ...savedResults]
-        : savedResults.filter(
+        ? [...fixtureResults, ...displayedSavedResults]
+        : displayedSavedResults.filter(
             (result) => result.gesherYear === Number(gesherYearFilter),
           );
   const searchTerm = search.trim().toLowerCase();
@@ -91,6 +99,41 @@ export function PublicCompass() {
       );
     } finally {
       setResetting(false);
+    }
+  };
+
+  const makeLegend = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setMakingLegend(true);
+    setLegendError("");
+
+    try {
+      const response = await fetch("/api/results/legend", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: legendName, code: legendCode }),
+      });
+      const result: CompassPoint = await response.json();
+      if (!response.ok) {
+        throw new Error((result as { error?: string }).error || "Could not make this person a legend.");
+      }
+
+      setSavedResults((current) =>
+        current.map((entry) =>
+          entry.id === result.id ? { ...result, isLegend: true } : entry,
+        ),
+      );
+      setLegendName("");
+      setLegendCode("");
+      setLegendOpen(false);
+    } catch (error) {
+      setLegendError(
+        error instanceof Error
+          ? error.message
+          : "Could not make this person a legend.",
+      );
+    } finally {
+      setMakingLegend(false);
     }
   };
 
@@ -198,17 +241,91 @@ export function PublicCompass() {
         </div>
       </section>
 
-      <div className="mt-4 text-right">
-        <button
-          type="button"
-          onClick={() => {
-            setResetOpen((open) => !open);
-            setResetError("");
-          }}
-          className="min-h-11 text-xs font-bold text-clay underline decoration-clay decoration-2 underline-offset-4 transition hover:text-ink"
-        >
-          Clear map
-        </button>
+      <div className="mt-4">
+        <div className="flex items-center justify-between gap-4">
+          <button
+            type="button"
+            onClick={() => {
+              setLegendOpen((open) => !open);
+              setLegendError("");
+              setResetOpen(false);
+            }}
+            className="min-h-11 text-xs font-bold text-moss underline decoration-moss decoration-2 underline-offset-4 transition hover:text-ink"
+          >
+            Make a legend
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setResetOpen((open) => !open);
+              setResetError("");
+              setLegendOpen(false);
+            }}
+            className="min-h-11 text-xs font-bold text-clay underline decoration-clay decoration-2 underline-offset-4 transition hover:text-ink"
+          >
+            Clear map
+          </button>
+        </div>
+
+        {legendOpen && (
+          <form
+            onSubmit={makeLegend}
+            className="mt-3 border border-moss bg-white p-3 text-left"
+          >
+            <p className="text-xs leading-5 text-ink/65">
+              Promote a saved result to Legend status. Legends always show on the map and appear in the Legends filter.
+            </p>
+            <label className="mt-3 block text-xs font-bold">
+              Saved name
+              <input
+                value={legendName}
+                onChange={(event) => setLegendName(event.target.value)}
+                maxLength={60}
+                placeholder="Enter the saved name"
+                autoComplete="off"
+                autoFocus
+                className="mt-2 min-h-11 w-full border border-line bg-paper px-3 py-2 text-base font-normal outline-none transition focus:border-moss focus:ring-2 focus:ring-moss/30 sm:text-xs"
+              />
+            </label>
+            <label className="mt-3 block text-xs font-bold">
+              Enter legend code
+              <input
+                value={legendCode}
+                onChange={(event) => setLegendCode(event.target.value)}
+                type="password"
+                inputMode="numeric"
+                autoComplete="off"
+                className="mt-2 min-h-11 w-full border border-line bg-paper px-3 py-2 text-base font-normal outline-none transition focus:border-moss focus:ring-2 focus:ring-moss/30 sm:text-xs"
+              />
+            </label>
+            {legendError && (
+              <p className="mt-2 text-xs font-bold text-clay" role="alert">
+                {legendError}
+              </p>
+            )}
+            <div className="mt-3 flex justify-end gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setLegendOpen(false);
+                  setLegendName("");
+                  setLegendCode("");
+                  setLegendError("");
+                }}
+                className="min-h-11 text-xs font-bold underline underline-offset-4"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                disabled={!legendName.trim() || !legendCode || makingLegend}
+                className="min-h-11 bg-moss px-3 py-2 text-xs font-bold text-white disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                {makingLegend ? "Promoting…" : "Make legend"}
+              </button>
+            </div>
+          </form>
+        )}
 
         {resetOpen && (
           <form
